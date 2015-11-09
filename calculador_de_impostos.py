@@ -1,5 +1,13 @@
 from impostos import ISS, ICMS, ICPP, IKCV
 
+class Imposto(object):
+
+	def __init__(self, outro_imposto):
+		self.__outro_imposto = outro_imposto
+
+	def calcula(self, orcamento):
+		pass
+
 class Calculador_de_impostos(object):
 
 	def realiza_calculo(self, orcamento, imposto):
@@ -24,6 +32,10 @@ if __name__ == '__main__':
 	calculador.realiza_calculo(orcamento, ISS())
 	calculador.realiza_calculo(orcamento, ICMS())
 
+	calculador.realiza_calculo(orcamento, ISS(ICMS()))	
+
 	print 'ICPP e IKCV'
 	calculador.realiza_calculo(orcamento, ICPP())
 	calculador.realiza_calculo(orcamento, IKCV())
+
+	calculador.realiza_calculo(orcamento, ICPP(IKCV()))
